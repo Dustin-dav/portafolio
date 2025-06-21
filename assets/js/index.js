@@ -1,4 +1,4 @@
- AOS.init({ duration: 1000, once: true });
+  AOS.init({ duration: 1000, once: true });
 
   const habilidades = [
     { nombre: "HTML/CSS", nivel: 90, color: "bg-info" },
@@ -42,19 +42,6 @@
       detalles: "Proyecto básico de ecommerce usando PHP y MySQL.",
       tecnologias: ["PHP", "MySQL", "Bootstrap"],
       repo: "https://github.com/dustinmacias/tienda-online"
-    }
-  ];
-
-  const testimonios = [
-    {
-      nombre: "Master Eloy Morán",
-      texto: "Dustin es un estudiante comprometido, siempre con ganas de aprender y mejorar sus habilidades técnicas.",
-      puesto: "Docente de informática"
-    },
-    {
-      nombre: "Ana Pérez",
-      texto: "Trabajamos juntos en el proyecto EcuPunto, y Dustin mostró gran responsabilidad y creatividad.",
-      puesto: "Compañera de proyecto"
     }
   ];
 
@@ -112,6 +99,7 @@
   }
 
   function cargarTestimonios() {
+    const testimonios = JSON.parse(localStorage.getItem("testimonios")) || [];
     const contenedor = document.getElementById("testimonials-container");
     contenedor.innerHTML = "";
     testimonios.forEach(t => {
@@ -121,7 +109,7 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <p class="card-text fst-italic">"${t.texto}"</p>
-            <h6 class="card-subtitle mt-3 text-end">- ${t.nombre}, <small>${t.puesto}</small></h6>
+            <h6 class="card-subtitle mt-3 text-end">- ${t.nombre}</h6>
           </div>
         </div>`;
       contenedor.appendChild(div);
@@ -133,11 +121,9 @@
     if (!button.matches("button[data-index]")) return;
     const index = button.getAttribute("data-index");
     const proyecto = proyectos[index];
-    const modalTitle = document.getElementById("projectModalLabel");
-    const modalBody = document.getElementById("projectModalBody");
-    modalTitle.textContent = proyecto.titulo;
-    modalBody.innerHTML = `
-      <img src="${proyecto.imagen}" alt="${proyecto.titulo}" class="img-fluid mb-3 rounded" />
+    document.getElementById("projectModalLabel").textContent = proyecto.titulo;
+    document.getElementById("projectModalBody").innerHTML = `
+      <img src="${proyecto.imagen}" class="img-fluid mb-3 rounded" alt="${proyecto.titulo}" />
       <p>${proyecto.detalles}</p>
       <h6>Tecnologías usadas:</h6>
       <p>${proyecto.tecnologias.join(", ")}</p>
@@ -150,23 +136,47 @@
     cargarHabilidadesBlandas();
     cargarProyectos();
     cargarTestimonios();
+
     document.getElementById("projects-container").addEventListener("click", mostrarDetallesProyecto);
 
-    document.getElementById("toggleDark").addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      const icon = document.getElementById("toggleDark").querySelector("i");
-      if(document.body.classList.contains("dark-mode")) {
-        icon.classList.remove("bi-moon-fill");
-        icon.classList.add("bi-sun-fill");
-      } else {
-        icon.classList.remove("bi-sun-fill");
-        icon.classList.add("bi-moon-fill");
-      }
-    });
+    const toggle = document.getElementById("toggleDark");
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const icon = toggle.querySelector("i");
+        if (document.body.classList.contains("dark-mode")) {
+          icon.classList.remove("bi-moon-fill");
+          icon.classList.add("bi-sun-fill");
+        } else {
+          icon.classList.remove("bi-sun-fill");
+          icon.classList.add("bi-moon-fill");
+        }
+      });
+    }
 
-    document.getElementById("contact-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Gracias por tu mensaje, me pondré en contacto pronto.");
-      e.target.reset();
-    });
+    const contactForm = document.getElementById("contact-form");
+    if (contactForm) {
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Gracias por tu mensaje, me pondré en contacto pronto.");
+        e.target.reset();
+      });
+    }
+
+    const testimonialForm = document.getElementById("testimonial-form");
+    if (testimonialForm) {
+      testimonialForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById("testimonial-name").value.trim();
+        const texto = document.getElementById("testimonial-text").value.trim();
+        if (!nombre || !texto) return;
+
+        const nuevos = JSON.parse(localStorage.getItem("testimonios")) || [];
+        nuevos.push({ nombre, texto });
+        localStorage.setItem("testimonios", JSON.stringify(nuevos));
+
+        e.target.reset();
+        cargarTestimonios();
+      });
+    }
   });
