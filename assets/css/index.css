@@ -1,0 +1,51 @@
+body {
+      background: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+    }
+    nav.navbar {
+      transition: background-color 0.3s;
+    }
+    .dark-mode nav.navbar {
+      background-color: #1f1f1f !important;
+    }
+    a, a.nav-link {
+      transition: color 0.3s;
+    }
+    .dark-mode a, .dark-mode a.nav-link {
+      color: #bb86fc !important;
+    }
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .rounded-circle {
+      max-width: 180px;
+      max-height: 180px;
+      object-fit: cover;
+    }
+    #toggleDark {
+      cursor: pointer;
+    }
+    .badge-tec {
+      font-size: 0.8rem;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    footer {
+      background: #343a40;
+      color: #eee;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .progress-bar {
+      font-weight: 600;
+    }

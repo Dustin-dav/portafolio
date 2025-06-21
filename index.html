@@ -1,11 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dustin David Macias Zambrano | Portafolio</title>
+  <meta name="description" content="Portafolio personal de Dustin David Macias Zambrano, desarrollador y estudiante de informática." />
+  <meta name="author" content="Dustin David Macias Zambrano" />
+  <meta name="keywords" content="Portafolio, Dustin Macias, Informática, Programación, Bootstrap, JavaScript" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
-    <h1>hola</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="#">Dustin Macias</a>
+    <button class="btn btn-outline-secondary me-2" id="toggleDark" title="Cambiar modo oscuro/claro"><i class="bi bi-moon-fill"></i></button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav fs-5">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#about">Sobre mí</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Educación</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#vision">Mi Visión</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container mt-5 pt-5">
+  <section id="about" class="my-5" data-aos="fade-up">
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <img src="https://i.pravatar.cc/180?u=dustinmacias" alt="Foto Dustin Macias" class="rounded-circle shadow" />
+      </div>
+      <div class="col-md-8">
+        <h2 class="mb-3">Sobre mí</h2>
+        <p>Soy Dustin David Macias Zambrano, tengo 16 años, estudiante de tercer año de bachillerato en informática en el Colegio Vicente Rodolfo Arte, Guayaquil. Este año me graduaré y sueño con ser ingeniero en sistemas, para crear soluciones que ayuden a personas y aportar a mi familia.</p>
+        <p>Me apasiona la programación y desarrollo web, y disfruto aprender nuevas tecnologías y enfrentar retos para crecer profesionalmente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="my-5" data-aos="fade-up">
+    <h2 class="mb-4">Habilidades Técnicas</h2>
+    <div class="row" id="skills-container"></div>
+    <h2 class="mt-5 mb-4">Habilidades Blandas</h2>
+    <div class="row" id="soft-skills-container"></div>
+  </section>
+
+  <section id="education" class="my-5" data-aos="fade-up">
+    <h2 class="mb-4">Educación</h2>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h5>Colegio Vicente Rodolfo Arte - Guayaquil</h5>
+        <p>Tercer año de bachillerato en informática. Año de graduación: 2025</p>
+      </li>
+      <li class="list-group-item">
+        <h5>Curso online: Programación Web Básica</h5>
+        <p>Aprendizaje de HTML, CSS, JavaScript y PHP</p>
+      </li>
+      <li class="list-group-item">
+        <h5>Taller de desarrollo de videojuegos con Godot</h5>
+        <p>Proyecto de juegos básicos en Godot Engine</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="projects" class="my-5" data-aos="fade-up">
+    <h2 class="mb-4">Proyectos</h2>
+    <div class="row" id="projects-container"></div>
+  </section>
+
+  <section id="testimonials" class="my-5" data-aos="fade-up">
+    <h2 class="mb-4">Testimonios</h2>
+    <div class="row" id="testimonials-container"></div>
+  </section>
+
+  <section id="vision" class="my-5" data-aos="fade-up">
+    <h2 class="mb-4">Mi Visión y Metas</h2>
+    <p>Quiero ser un ingeniero en sistemas que aporte con tecnología innovadora para resolver problemas reales. Mi meta es seguir aprendiendo y trabajando en proyectos que tengan impacto social y que a la vez me permitan sostener a mi familia.</p>
+  </section>
+
+  <section id="contact" class="my-5" data-aos="fade-up">
+    <h2 class="mb-4">Contacto</h2>
+    <form id="contact-form" class="mb-4">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" placeholder="Tu nombre" required />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" placeholder="tu@email.com" required />
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="message" rows="4" placeholder="Escribe tu mensaje aquí" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+    <div>
+      <h5>Sígueme en:</h5>
+      <a href="https://github.com/dustinmacias" target="_blank" class="me-3 fs-4 text-dark"><i class="bi bi-github"></i></a>
+      <a href="https://linkedin.com/in/dustinmacias" target="_blank" class="me-3 fs-4 text-primary"><i class="bi bi-linkedin"></i></a>
+      <a href="mailto:dustin@example.com" class="fs-4 text-danger"><i class="bi bi-envelope-fill"></i></a>
+    </div>
+    <div class="mt-3">
+      <a href="CV-DustinMacias.pdf" class="btn btn-outline-primary" download>Descargar CV (PDF)</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Dustin David Macias Zambrano. Todos los derechos reservados.
+</footer>
+
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModalLabel">Título del proyecto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="projectModalBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="assets/js/index.js"></script>
 </body>
 </html>
